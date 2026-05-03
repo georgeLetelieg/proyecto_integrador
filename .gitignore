@@ -1,0 +1,8 @@
+#Lo primero es omitir la carpeta de module para que no se suba y ocupe menos espacio
+node_modules/
+
+#Omitiremos este archivo que contendra las claves del proyecto
+.env
+
+#Agregados nuestra "LLAVE DE SEGURIDAD" para poder acceder a firebase
+src/config/proyectointegrador-3cc91-firebase-adminsdk-fbsvc-712df6b8a0.json
