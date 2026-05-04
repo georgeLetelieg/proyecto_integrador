@@ -357,3 +357,4 @@ Front-end
     npm install vue-router pinia axios
 4.- Entramos a client y inbstalamos axios con el comando:
     npm install vue-router pinia axios
+5.- Creación de caprteas
