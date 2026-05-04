@@ -87,6 +87,10 @@ const PORT = process.env.PORT || 3000;
 const authRoutes = require('./routes/auth.routes');
 const huertoRoutes = require('./routes/huertos.routes');
 const temporadaRoutes = require('./routes/temporadas.routes');
+const usuarioRoutes = require('./routes/usuarios.routes');
+const recoleccionRoutes = require('./routes/recolecciones.routes');
+const pagoRoutes = require('./routes/pagos.routes');
+const fichaRoutes = require('./routes/fichas.routes');
 
 app.use(express.json());
 
@@ -96,6 +100,10 @@ app.use('/auth', authRoutes);
 app.use('/huertos', huertoRoutes);
 //Asi como lo hiucimos en auth, y huertos tambien en temporadas
 app.use('/temporadas', temporadaRoutes);
+app.use('/usuarios', usuarioRoutes);
+app.use('/recolecciones', recoleccionRoutes);
+app.use('/pagos', pagoRoutes);
+app.use('/fichas', fichaRoutes);
 
 
 app.get('/', (req, res) => {

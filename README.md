@@ -263,4 +263,83 @@ Etapa 3 — Temporadas y recolecciones - registro de trabajo diario
                 "creadoEn": "2026-05-04T01:15:04.920Z"
             }
 
-        
+
+--------------------------------------------------------------------------
+
+Etapa adicional, gestion de usuarios:
+1.- Se crea el controlador y el routes, estos se agregan al index
+2.- Pruebas en postMan:
+    Paso 1 Login de admin:
+        {
+            "email": "juan@gmail.com",
+            "password": "123456"
+        }
+        uid: kULPf8k7uDWdbXAVm7UFk1bCAon2
+    Paso 2 obtenemos a los usuarios:
+    GET http://localhost:3000/usuarios
+    [
+        {
+            "id": "41il1Ccgs7ObghhDmIpvTZ4iJNO2",
+            "uid": "41il1Ccgs7ObghhDmIpvTZ4iJNO2",
+            "nombre": "Juan Admin",
+            "email": "juan@gmail.com",
+            "rol": "admin",
+            "creadoEn": "2026-05-03T02:11:27.719Z"
+        },
+        {
+            "id": "7dEsTtmvYqXzigPqXQL2MPLCPqG3",
+            "uid": "7dEsTtmvYqXzigPqXQL2MPLCPqG3",
+            "nombre": "Carlos Dueño",
+            "email": "carlos@gmail.com",
+            "rol": "dueño",
+            "tipo_documento": "rut",
+            "numero_documento": "15.678.432-5",
+            "fecha_nacimiento": "1978-06-10",
+            "telefono": "+56934567890",
+            "creadoEn": "2026-05-03T02:45:21.022Z"
+        },
+        {
+            "id": "kULPf8k7uDWdbXAVm7UFk1bCAon2",
+            "uid": "kULPf8k7uDWdbXAVm7UFk1bCAon2",
+            "nombre": "Juan Admin",
+            "email": "juan@gmail.com",
+            "rol": "admin",
+            "creadoEn": "2026-05-03T02:34:31.059Z"
+        },
+        {
+            "id": "ssNeLKZsqPaWRcYuBnlZxzDxpQK2",
+            "uid": "ssNeLKZsqPaWRcYuBnlZxzDxpQK2",
+            "nombre": "Pedro Trabajador",
+            "email": "pedro@gmail.com",
+            "rol": "trabajador",
+            "tipo_documento": "rut",
+            "numero_documento": "98.765.432-1",
+            "fecha_nacimiento": "1995-07-20",
+            "telefono": "+56987654321",
+            "creadoEn": "2026-05-04T00:48:00.606Z",
+            "nacionalidad": "chileno",
+            "tipo_contrato": "con_contrato"
+        }
+    ]
+    Paso 3 obtenemos usuario por ID
+    GET http://localhost:3000/usuarios/<uid del trabajador>
+    {
+        "id": "ssNeLKZsqPaWRcYuBnlZxzDxpQK2",
+        "uid": "ssNeLKZsqPaWRcYuBnlZxzDxpQK2",
+        "nombre": "Pedro Trabajador",
+        "email": "pedro@gmail.com",
+        "rol": "trabajador",
+        "tipo_documento": "rut",
+        "numero_documento": "98.765.432-1",
+        "fecha_nacimiento": "1995-07-20",
+        "telefono": "+56987654321",
+        "creadoEn": "2026-05-04T00:48:00.606Z",
+        "nacionalidad": "chileno",
+        "tipo_contrato": "con_contrato"
+    }
+
+--------------------------------------------------------------------------
+
+Etapa 4 — Pagos - cálculo y registro de pagos por periodo
+
+1.- Se crea el controlador y el routes, estos se agregan al index

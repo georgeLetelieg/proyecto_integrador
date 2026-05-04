@@ -1,60 +1,66 @@
 // Importamos db desde firebase
 const { db } = require('../config/firebase');
 
-// ─── CREAR TEMPORADA ─────────────────────────────────────
+// Creamos la temporada
 const crearTemporada = async (req, res) => {
-    const { huertoId, fruta, fechaInicio } = req.body;
+  const { huertoId, fruta, fechaInicio, precio_bandeja, precio_granel } = req.body;
 
-    try {
-        // Validamos que vengan los datos obligatorios
-        if (!huertoId || !fruta || !fechaInicio) {
-            return res.status(400).json({ error: 'huertoId, fruta y fechaInicio son obligatorios' });
-        }
-
-        // Verificamos que el huerto exista
-        const huertoDoc = await db.collection('huertos').doc(huertoId).get();
-        if (!huertoDoc.exists) {
-            return res.status(404).json({ error: 'Huerto no encontrado' });
-        }
-
-        // Verificamos que el huerto no tenga una temporada activa
-        const temporadaActiva = await db.collection('temporadas')
-            .where('huertoId', '==', huertoId)
-            .where('estado', '==', 'activa')
-            .get();
-
-        if (!temporadaActiva.empty) {
-            return res.status(400).json({
-                error: 'El huerto ya tiene una temporada activa'
-            });
-        }
-
-        // Construimos el objeto de la temporada
-        const nuevaTemporada = {
-            huertoId,
-            fruta,
-            fechaInicio,
-            fechaFin: null, // Se llena cuando se cierra la temporada
-            estado: 'activa',
-            creadoPor: req.usuario.uid,
-            creadoEn: new Date().toISOString()
-        };
-
-        // Guardamos en Firestore
-        const temporadaRef = await db.collection('temporadas').add(nuevaTemporada);
-
-        return res.status(201).json({
-            mensaje: 'Temporada creada correctamente',
-            id: temporadaRef.id
-        });
-
-    } catch (error) {
-        console.error('Error al crear temporada:', error);
-        return res.status(500).json({ error: 'Error interno del servidor' });
+  try {
+    // Validamos que vengan los datos obligatorios
+    if (!huertoId || !fruta || !fechaInicio || !precio_bandeja || !precio_granel) {
+      return res.status(400).json({ error: 'Todos los campos son obligatorios incluyendo precios' });
     }
+
+    // Validamos que los precios sean numeros positivos
+    if (precio_bandeja <= 0 || precio_granel <= 0) {
+      return res.status(400).json({ error: 'Los precios deben ser mayores a 0' });
+    }
+
+    // Verificamos que el huerto exista
+    const huertoDoc = await db.collection('huertos').doc(huertoId).get();
+    if (!huertoDoc.exists) {
+      return res.status(404).json({ error: 'Huerto no encontrado' });
+    }
+
+    // Verificamos que el huerto no tenga una temporada activa
+    const temporadaActiva = await db.collection('temporadas')
+      .where('huertoId', '==', huertoId)
+      .where('estado', '==', 'activa')
+      .get();
+
+    if (!temporadaActiva.empty) {
+      return res.status(400).json({ 
+        error: 'El huerto ya tiene una temporada activa' 
+      });
+    }
+
+    // Construimos el objeto de la temporada con precios
+    const nuevaTemporada = {
+      huertoId,
+      fruta,
+      fechaInicio,
+      fechaFin: null,
+      precio_bandeja,
+      precio_granel,
+      estado: 'activa',
+      creadoPor: req.usuario.uid,
+      creadoEn: new Date().toISOString()
+    };
+
+    const temporadaRef = await db.collection('temporadas').add(nuevaTemporada);
+
+    return res.status(201).json({
+      mensaje: 'Temporada creada correctamente',
+      id: temporadaRef.id
+    });
+
+  } catch (error) {
+    console.error('Error al crear temporada:', error);
+    return res.status(500).json({ error: 'Error interno del servidor' });
+  }
 };
 
-// ─── OBTENER TODAS LAS TEMPORADAS ────────────────────────
+// Listamos todas las temporadas
 const obtenerTemporadas = async (req, res) => {
     try {
         const snapshot = await db.collection('temporadas').get();
@@ -76,7 +82,7 @@ const obtenerTemporadas = async (req, res) => {
     }
 };
 
-// ─── OBTENER TEMPORADA POR ID ─────────────────────────────
+// Obtenemos la temporada gracias al id
 const obtenerTemporadaPorId = async (req, res) => {
     const { id } = req.params;
 
@@ -98,7 +104,7 @@ const obtenerTemporadaPorId = async (req, res) => {
     }
 };
 
-// ─── CERRAR TEMPORADA ─────────────────────────────────────
+// Fin de temporada
 const cerrarTemporada = async (req, res) => {
     const { id } = req.params;
 
