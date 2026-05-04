@@ -6,3 +6,7 @@ node_modules/
 
 #Agregados nuestra "LLAVE DE SEGURIDAD" para poder acceder a firebase
 src/config/proyectointegrador-3cc91-firebase-adminsdk-fbsvc-712df6b8a0.json
+
+
+#Despues de crear el back vamos a configurar el front, omitimos el nodemodules
+client/node_modules/

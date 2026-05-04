@@ -343,3 +343,17 @@ Etapa adicional, gestion de usuarios:
 Etapa 4 — Pagos - cálculo y registro de pagos por periodo
 
 1.- Se crea el controlador y el routes, estos se agregan al index
+
+
+
+--------------------------------------------------------------------------
+
+Front-end
+
+1.- Creamos erl cliente con un template de vue.js
+    npm create vite@latest client -- --template vue
+2.- Damos que si a todo y entramos a http://localhost:5173/
+3.- Agregamos pinia
+    npm install vue-router pinia axios
+4.- Entramos a client y inbstalamos axios con el comando:
+    npm install vue-router pinia axios
