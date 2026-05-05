@@ -3,8 +3,8 @@
     <AppSidebar />
     <main class="content">
       <div class="content-header">
-        <h1>👷 Trabajadores</h1>
-        <button class="btn-primary" @click="mostrarFormulario = true">+ Nuevo Trabajador</button>
+        <h1>Trabajadores</h1>
+        <button class="btn-primary" @click="mostrarFormulario = true">Nuevo Trabajador</button>
       </div>
 
       <!-- Formulario crear trabajador -->
@@ -67,7 +67,7 @@
       <!-- Modal ficha trabajador -->
       <div v-if="fichaSeleccionada" class="modal">
         <div class="modal-card">
-          <h2>📋 Ficha del Trabajador</h2>
+          <h2>Ficha del Trabajador</h2>
           <div class="ficha-info">
             <p><strong>Nombre:</strong> {{ fichaSeleccionada.trabajador.nombre }}</p>
             <p><strong>Email:</strong> {{ fichaSeleccionada.trabajador.email }}</p>
@@ -75,7 +75,7 @@
             <p><strong>Nacionalidad:</strong> {{ fichaSeleccionada.trabajador.nacionalidad }}</p>
             <p><strong>Contrato:</strong> {{ fichaSeleccionada.trabajador.tipo_contrato }}</p>
           </div>
-          <h3>📊 Estadísticas</h3>
+          <h3>Estadísticas</h3>
           <div class="ficha-stats">
             <div class="stat">
               <span>Total recolecciones</span>

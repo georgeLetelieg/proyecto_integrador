@@ -3,8 +3,8 @@
     <AppSidebar />
     <main class="content">
       <div class="content-header">
-        <h1>🌿 Huertos</h1>
-        <button class="btn-primary" @click="mostrarFormulario = true">+ Nuevo Huerto</button>
+        <h1>Huertos</h1>
+        <button class="btn-primary" @click="mostrarFormulario = true">Nuevo Huerto</button>
       </div>
 
       <!-- Modal crear huerto -->

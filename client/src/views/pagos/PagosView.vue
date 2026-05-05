@@ -3,8 +3,8 @@
     <AppSidebar />
     <main class="content">
       <div class="content-header">
-        <h1>💰 Pagos</h1>
-        <button class="btn-primary" @click="mostrarCalculador = true">+ Calcular Pago</button>
+        <h1>Pagos</h1>
+        <button class="btn-primary" @click="mostrarCalculador = true">Calcular Pago</button>
       </div>
 
       <!-- Modal calcular pago -->
@@ -94,10 +94,6 @@
 <div v-else-if="resultado && !resultado.resumen" class="vacio">
   {{ resultado.mensaje }}
 </div>
-
-
-
-
           <div class="modal-actions">
             <button class="btn-secondary" @click="cerrarCalculador">Cancelar</button>
             <button class="btn-primary" @click="calcularPago">Calcular</button>

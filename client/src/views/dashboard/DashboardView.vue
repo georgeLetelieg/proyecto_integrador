@@ -7,22 +7,19 @@
 
       <div class="cards">
         <div class="card">
-          <span class="card-icon">🌿</span>
           <h3>Huertos</h3>
           <p class="card-numero">{{ totales.huertos }}</p>
         </div>
         <div class="card">
-          <span class="card-icon">👷</span>
+          <span class="card-icon"></span>
           <h3>Trabajadores</h3>
           <p class="card-numero">{{ totales.trabajadores }}</p>
         </div>
         <div class="card">
-          <span class="card-icon">📦</span>
           <h3>Recolecciones</h3>
           <p class="card-numero">{{ totales.recolecciones }}</p>
         </div>
         <div class="card">
-          <span class="card-icon">💰</span>
           <h3>Pagos realizados</h3>
           <p class="card-numero">{{ totales.pagos }}</p>
         </div>

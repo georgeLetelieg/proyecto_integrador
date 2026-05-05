@@ -3,8 +3,8 @@
     <AppSidebar />
     <main class="content">
       <div class="content-header">
-        <h1>🍎 Temporadas</h1>
-        <button class="btn-primary" @click="mostrarFormulario = true">+ Nueva Temporada</button>
+        <h1>Temporadas</h1>
+        <button class="btn-primary" @click="mostrarFormulario = true">Nueva Temporada</button>
       </div>
 
       <!-- Modal crear temporada -->
