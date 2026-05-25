@@ -181,7 +181,7 @@
                 </td>
                 <td class="acciones">
                   <button class="btn-info" @click="verFicha(trabajador.uid)">Ver ficha</button>
-                  <button class="btn-danger" @click="eliminarTrabajador(trabajador.uid)">Eliminar</button>
+                  <button class="btn-danger" @click="desactivarTrabajador(trabajador.uid)">Desactivar</button>
                 </td>
               </tr>
             </tbody>
@@ -200,7 +200,7 @@ const {
   misTrabajadores, trabajadoresLibres, cargando,
   mostrarFormulario, fichaSeleccionada, error, form,
   pestanaActiva, cerrarFormulario, crearTrabajador,
-  verFicha, eliminarTrabajador
+  verFicha, eliminarTrabajador, desactivarTrabajador
 } = useTrabajadores();
 </script>
 

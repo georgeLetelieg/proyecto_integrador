@@ -1,7 +1,6 @@
 // Importamos db desde firebase
 const { db } = require('../config/firebase');
 
-// ─── CALCULAR PAGO ────────────────────────────────────────
 const calcularPago = async (req, res) => {
   const { trabajadorId, huertoId, temporadaId, periodo, fechaInicio, fechaFin } = req.body;
 
@@ -99,7 +98,6 @@ const calcularPago = async (req, res) => {
   }
 };
 
-// ─── REGISTRAR PAGO ───────────────────────────────────────
 const registrarPago = async (req, res) => {
   const { trabajadorId, huertoId, temporadaId, periodo, fechaInicio, fechaFin, monto } = req.body;
 
@@ -143,7 +141,6 @@ const registrarPago = async (req, res) => {
   }
 };
 
-// ─── OBTENER TODOS LOS PAGOS ──────────────────────────────
 const obtenerPagos = async (req, res) => {
   try {
     const snapshot = await db.collection('pagos').get();
@@ -165,7 +162,6 @@ const obtenerPagos = async (req, res) => {
   }
 };
 
-// ─── OBTENER PAGOS POR TRABAJADOR ─────────────────────────
 const obtenerPagosPorTrabajador = async (req, res) => {
   const { trabajadorId } = req.params;
 

@@ -61,10 +61,10 @@ export function usePagos() {
         return;
       }
       const response = await api.post('/pagos/calcular', form.value);
-      console.log('Respuesta backend:', response.data); // ← agrega esto
+      console.log('Respuesta backend:', response.data);
       resultado.value = response.data;
     } catch (err) {
-      console.log('Error completo:', err.response); // ← y esto
+      console.log('Error completo:', err.response);
       error.value = err.response?.data?.error || 'Error al calcular pago';
     }
   };

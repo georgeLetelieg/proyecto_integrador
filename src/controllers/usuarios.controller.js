@@ -125,4 +125,36 @@ const eliminarUsuario = async (req, res) => {
   }
 };
 
-module.exports = { obtenerUsuarios, obtenerUsuarioPorId, editarUsuario, eliminarUsuario };
+const desactivarUsuario = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const usuarioDoc = await db.collection('usuarios').doc(id).get();
+    if (!usuarioDoc.exists) {
+      return res.status(404).json({ error: 'Usuario no encontrado' });
+    }
+
+    if (id === req.usuario.uid) {
+      return res.status(400).json({ error: 'No puedes desactivarte a ti mismo' });
+    }
+
+    const usuarioData = usuarioDoc.data();
+    if (usuarioData.rol !== 'trabajador') {
+      return res.status(400).json({ error: 'Solo se pueden desactivar trabajadores' });
+    }
+
+    // Desactivamos en vez de eliminar
+    await db.collection('usuarios').doc(id).update({
+      activo: false,
+      desactivadoEn: new Date().toISOString()
+    });
+
+    return res.status(200).json({ mensaje: 'Trabajador desactivado correctamente' });
+
+  } catch (error) {
+    console.error('Error al desactivar usuario:', error);
+    return res.status(500).json({ error: 'Error interno del servidor' });
+  }
+};
+
+module.exports = { obtenerUsuarios, obtenerUsuarioPorId, editarUsuario, eliminarUsuario, desactivarUsuario };

@@ -17,7 +17,6 @@ export const useAuthStore = defineStore('auth', {
       this.usuario = usuario;
     },
 
-    // ← función nueva para recuperar el usuario al recargar
     async cargarUsuario() {
       const uid = localStorage.getItem('uid');
       if (!uid) return;

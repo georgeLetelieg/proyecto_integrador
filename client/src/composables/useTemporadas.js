@@ -6,11 +6,11 @@ export function useTemporadas() {
   const huertos = ref([]);
   const cargando = ref(true);
   const mostrarFormulario = ref(false);
-  const mostrarCierre = ref(false);         // ← nuevo
-  const temporadaACerrar = ref(null);        // ← nuevo
-  const fechaCierre = ref('');               // ← nuevo
+  const mostrarCierre = ref(false);
+  const temporadaACerrar = ref(null);
+  const fechaCierre = ref('');
   const error = ref('');
-  const errorCierre = ref('');              // ← nuevo
+  const errorCierre = ref('');
   const anioFiltro = ref(new Date().getFullYear());
 
   const form = ref({

@@ -24,8 +24,8 @@ const obtenerTrabajadoresLibres = async (req, res) => {
 
     // Solo devolvemos los que no están en ningún huerto
     const trabajadoresLibres = usuariosSnapshot.docs
-      .map(doc => ({ uid: doc.id, ...doc.data() }))
-      .filter(t => !trabajadoresOcupados.has(t.uid));
+  .map(doc => ({ uid: doc.id, ...doc.data() }))
+  .filter(t => !trabajadoresOcupados.has(t.uid) && t.activo !== false);
 
     return res.status(200).json(trabajadoresLibres);
 
@@ -63,13 +63,13 @@ const obtenerMisTrabajadores = async (req, res) => {
           activos.map(async trabajadorId => {
             if (!trabajadoresMap.has(trabajadorId)) {
               const trabajadorDoc = await db.collection('usuarios').doc(trabajadorId).get();
-              if (trabajadorDoc.exists) {
-                trabajadoresMap.set(trabajadorId, {
-                  uid: trabajadorDoc.id,
-                  ...trabajadorDoc.data(),
-                  huertos: []
-                });
-              }
+              if (trabajadorDoc.exists && trabajadorDoc.data().activo !== false) {
+                  trabajadoresMap.set(trabajadorId, {
+                    uid: trabajadorDoc.id,
+                    ...trabajadorDoc.data(),
+                    huertos: []
+                  });
+                }
             }
             if (trabajadoresMap.has(trabajadorId)) {
               trabajadoresMap.get(trabajadorId).huertos.push({

@@ -74,6 +74,16 @@ export function useTrabajadores() {
     }
   };
 
+  const desactivarTrabajador = async (uid) => {
+  if (!confirm('¿Desactivar este trabajador? Su historial se conservará.')) return;
+  try {
+    await api.put(`/usuarios/${uid}/desactivar`);
+    await cargarTrabajadores();
+  } catch (err) {
+    alert(err.response?.data?.error || 'Error al desactivar trabajador');
+  }
+  };
+
   const verFicha = async (uid) => {
     try {
       const response = await api.get(`/fichas/${uid}`);
@@ -99,6 +109,6 @@ export function useTrabajadores() {
     misTrabajadores, trabajadoresLibres, cargando,
     mostrarFormulario, fichaSeleccionada, error, form,
     pestanaActiva, cerrarFormulario, crearTrabajador,
-    verFicha, eliminarTrabajador, cargarTrabajadores
+    verFicha, eliminarTrabajador, cargarTrabajadores, desactivarTrabajador
   };
 }

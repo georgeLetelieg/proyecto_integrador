@@ -6,22 +6,15 @@ const {
   obtenerUsuarios,
   obtenerUsuarioPorId,
   editarUsuario,
-  eliminarUsuario
+  eliminarUsuario,
+  desactivarUsuario
 } = require('../controllers/usuarios.controller');
 
-// Todas las rutas requieren autenticacion
 router.use(verificarToken);
-
-// GET /usuarios - solo admin puede ver todos
 router.get('/', verificarRol('admin', 'dueño'), obtenerUsuarios);
-
-// GET /usuarios/:id - admin y dueño pueden ver uno
 router.get('/:id', verificarRol('admin', 'dueño'), obtenerUsuarioPorId);
-
-// PUT /usuarios/:id - admin puede editar cualquiera
 router.put('/:id', verificarRol('admin'), editarUsuario);
-
-// DELETE /usuarios/:id - solo admin puede eliminar
 router.delete('/:id', verificarRol('admin', 'dueño'), eliminarUsuario);
+router.put('/:id/desactivar', verificarRol('admin', 'dueño'), desactivarUsuario);
 
 module.exports = router;

@@ -10,7 +10,6 @@ body {
   color: #444;
 }
 
-/* ─── LAYOUT ─────────────────────────────────────────── */
 .layout {
   display: flex;
   min-height: 100vh;
@@ -33,7 +32,6 @@ body {
   color: #2d6a4f;
 }
 
-/* ─── SIDEBAR ─────────────────────────────────────────── */
 .sidebar {
   width: 240px;
   background-color: #2d6a4f;
@@ -84,7 +82,6 @@ nav a.router-link-active {
   background-color: #1b4332;
 }
 
-/* ─── BOTONES ─────────────────────────────────────────── */
 .btn-primary {
   background-color: #2d6a4f;
   color: white;
@@ -169,7 +166,6 @@ nav a.router-link-active {
   margin-left: 0.3rem;
 }
 
-/* ─── FORMULARIOS ─────────────────────────────────────── */
 .form-group {
   margin-bottom: 1rem;
 }
@@ -204,7 +200,6 @@ select:focus {
   border-color: #2d6a4f;
 }
 
-/* ─── MODAL ───────────────────────────────────────────── */
 .modal {
   position: fixed;
   inset: 0;
@@ -242,7 +237,6 @@ select:focus {
   justify-content: flex-end;
 }
 
-/* ─── TABLA ───────────────────────────────────────────── */
 .tabla-container {
   background: white;
   border-radius: 12px;
@@ -276,7 +270,6 @@ tr:hover td {
   background-color: #f9f9f9;
 }
 
-/* ─── BADGES ──────────────────────────────────────────── */
 .badge-activo,
 .badge-pagado,
 .badge-contrato {
@@ -297,7 +290,6 @@ tr:hover td {
   font-size: 0.8rem;
 }
 
-/* ─── MISCELANEO ──────────────────────────────────────── */
 .cargando,
 .vacio {
   text-align: center;
@@ -311,4 +303,164 @@ tr:hover td {
   color: #e63946;
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+
+  /* Layout */
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    padding: 1rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .sidebar-header {
+    margin-bottom: 0;
+    flex: 1;
+  }
+
+  nav {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+
+  nav a {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.8rem;
+  }
+
+  .btn-logout {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .content {
+    padding: 1rem;
+  }
+
+  .content-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .tabla-container {
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 600px;
+  }
+
+  .modal-card {
+    margin: 1rem;
+    max-width: 100%;
+    max-height: 95vh;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cards-reporte {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card-balance {
+    grid-column: span 2;
+  }
+
+  .resumen-ventas {
+    grid-template-columns: 1fr;
+  }
+
+  .filtros-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vista-principal {
+    grid-template-columns: 1fr;
+  }
+
+  .pestanas {
+    flex-direction: column;
+  }
+
+  .filtro-anio {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .anios {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .sidebar {
+    width: 200px;
+  }
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cards-reporte {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .filtros-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.sidebar-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.btn-menu {
+  display: none;
+  background: none;
+  border: 2px solid white;
+  color: white;
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .sidebar-top {
+    margin-bottom: 0.5rem;
+    width: 100%;
+  }
+  .sidebar-header {
+    margin-bottom: 0;
+  }
+  .btn-menu {
+    display: block;
+  }
+  nav {
+    display: none;
+    width: 100%;
+  }
+  nav.nav-abierto {
+    display: flex;
+  }
+  .btn-logout {
+    width: 100%;
+  }
 }

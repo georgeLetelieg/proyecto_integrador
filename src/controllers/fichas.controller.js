@@ -1,7 +1,6 @@
 // Importamos db desde firebase
 const { db } = require('../config/firebase');
 
-// ─── OBTENER FICHA DE UN TRABAJADOR ──────────────────────
 const obtenerFicha = async (req, res) => {
   const { trabajadorId } = req.params;
 
@@ -94,7 +93,6 @@ const obtenerFicha = async (req, res) => {
   }
 };
 
-// ─── LISTAR TODAS LAS FICHAS ──────────────────────────────
 const obtenerFichas = async (req, res) => {
   try {
     // Obtenemos todos los trabajadores

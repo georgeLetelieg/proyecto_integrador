@@ -8,7 +8,6 @@ const api = axios.create({
   }
 });
 
-// Interceptor → agrega el uid en cada peticion automaticamente
 api.interceptors.request.use(config => {
   const uid = localStorage.getItem('uid');
   if (uid) {

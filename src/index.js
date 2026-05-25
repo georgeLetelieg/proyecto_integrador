@@ -94,6 +94,10 @@ const recoleccionRoutes = require('./routes/recolecciones.routes');
 const pagoRoutes = require('./routes/pagos.routes');
 const fichaRoutes = require('./routes/fichas.routes');
 const trabajadorRoutes = require('./routes/trabajadores.routes');
+const ventaRoutes = require('./routes/ventas.routes');
+const compradorRoutes = require('./routes/compradores.routes');
+const reporteRoutes = require('./routes/reportes.routes');
+
 
 // Permitir peticiones desde Vue
 app.use(cors({
@@ -112,6 +116,9 @@ app.use('/recolecciones', recoleccionRoutes);
 app.use('/pagos', pagoRoutes);
 app.use('/fichas', fichaRoutes);
 app.use('/trabajadores', trabajadorRoutes);
+app.use('/ventas', ventaRoutes);
+app.use('/compradores', compradorRoutes);
+app.use('/reportes', reporteRoutes);
 
 
 app.get('/', (req, res) => {

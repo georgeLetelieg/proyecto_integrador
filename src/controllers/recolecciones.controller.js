@@ -1,7 +1,6 @@
 // Importamos db desde firebase
 const { db } = require('../config/firebase');
 
-// ─── REGISTRAR RECOLECCION ────────────────────────────────
 const registrarRecoleccion = async (req, res) => {
   const { trabajadorId, huertoId, temporadaId, tipo, cantidad } = req.body;
 
@@ -85,7 +84,6 @@ const registrarRecoleccion = async (req, res) => {
   }
 };
 
-// ─── OBTENER TODAS LAS RECOLECCIONES ─────────────────────
 const obtenerRecolecciones = async (req, res) => {
   try {
     const snapshot = await db.collection('recolecciones').get();
@@ -107,7 +105,6 @@ const obtenerRecolecciones = async (req, res) => {
   }
 };
 
-// ─── OBTENER RECOLECCIONES POR TRABAJADOR ────────────────
 const obtenerRecoleccionesPorTrabajador = async (req, res) => {
   const { trabajadorId } = req.params;
 
@@ -133,7 +130,6 @@ const obtenerRecoleccionesPorTrabajador = async (req, res) => {
   }
 };
 
-// ─── OBTENER RECOLECCIONES POR TEMPORADA ─────────────────
 const obtenerRecoleccionesPorTemporada = async (req, res) => {
   const { temporadaId } = req.params;
 
