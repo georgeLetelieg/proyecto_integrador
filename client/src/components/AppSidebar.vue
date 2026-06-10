@@ -12,7 +12,7 @@
     </div>
 
     <nav :class="{ 'nav-abierto': menuAbierto }">
-      <router-link to="/dashboard" @click="menuAbierto = false">Dashboard</router-link>
+      <router-link to="/dashboard" @click="menuAbierto = false">Dashboard/Inicio</router-link>
       <router-link to="/usuarios" @click="menuAbierto = false">Usuarios</router-link>
       <router-link to="/huertos" @click="menuAbierto = false">Huertos</router-link>
       <router-link to="/temporadas" @click="menuAbierto = false">Temporadas</router-link>

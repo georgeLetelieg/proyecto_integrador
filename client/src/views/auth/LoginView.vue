@@ -6,7 +6,7 @@
 
       <form @submit.prevent="handleLogin">
         <div class="form-group">
-          <label>Email</label>
+          <label>Ingrese su Email</label>
           <input
             v-model="form.email"
             type="email"
